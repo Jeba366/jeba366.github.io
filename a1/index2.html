@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Accordion Menu with Plus Minus Icon</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Open+Sans" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+	body {
+		background: #2bba9e;
+	}
+	.accordion {
+		margin-top: 60px; /* Add space above accordion */
+	}
+	.accordion .card {
+		border-radius: 0;
+		border-width: 1px 0 1px 0;
+	}
+	.accordion .card:first-child {
+		border-top: none;
+	}
+	.accordion .card .card-header {
+		background: #fff;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		border-radius: 0;
+		margin-bottom: -2px;
+		font-family: "Roboto", sans-serif;
+	}
+	.accordion .card-header:hover {
+		background: #f8f8f8;
+	}
+	.accordion .card-header h2 span {
+		float: left;
+		margin-top: 10px;
+	}
+	.accordion .card-header .btn {
+		font-size: 1.04rem;
+		font-weight: 500;
+		width: 100%;
+		text-align: left;
+		position: relative;
+		top: -2px;
+	}
+	.accordion .card-header i {
+		float: right;
+		font-size: 1.3rem;
+		font-weight: bold;
+		position: relative;
+		top: 5px;
+	}
+	.accordion .card-header button:hover {
+		color: #23384e;
+	}
+	.accordion .card-body {
+		background: #eaeaea;
+		color: #595959;
+	}
+	.accordion .highlight {
+		color: #fff;
+		background: #202d3c !important;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		// Add minus icon for collapse element which is open by default
+		$(".collapse.show").each(function(){
+			$(this).siblings(".card-header").find(".btn i").html("remove");
+			$(this).prev(".card-header").addClass("highlight");
+		});
+		
+		// Toggle plus minus icon on show hide of collapse element
+		$(".collapse").on('show.bs.collapse', function(){
+			$(this).parent().find(".card-header .btn i").html("remove");
+		}).on('hide.bs.collapse', function(){
+			$(this).parent().find(".card-header .btn i").html("add");
+		});
+		
+		// Highlight open collapsed element 
+		$(".card-header .btn").click(function(){
+			$(".card-header").not($(this).parents()).removeClass("highlight");
+			$(this).parents(".card-header").toggleClass("highlight");
+		});
+	});
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 offset-lg-2">
+			<div class="accordion" id="accordionExample">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h2 class="clearfix mb-0">
+							<a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">About <i class="material-icons">add</i></a>									
+						</h2>
+					</div>
+					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+						<div class="card-body">BY JOANNA PIACENZA
+May 2, 2018 at 12:01 am ET
+When it comes to the brands most beloved by men and women, a few companies are atop both lists, such as Google LLC and The Hershey Co.Men have slightly higher consumer-spending power than women. According to the Bureau of Labor Statistics’ latest Consumer Expenditure Survey released in April, single men have an average annual expenditure of $35,018 when looking at 2015-2016 data, compared to single women’s $33,786.
+
+Single men also spend twice as much as women on alcohol, which is notable as there are 10 alcohol companies and brands in men’s top 50 brands.
+
+Even so, many brands that are disproportionately admired by men are taking steps to draw in a more female base, either through marketing campaigns or female spokespeople.</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>                            
